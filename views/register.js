@@ -3,6 +3,14 @@ const registerModel=require('../model/registerModel.js');
 const router=express.Router();
 
 
+router.get('/removecookies',(req,res)=>{
+  const cookie=req.cookies.email;
+  res.cookie("email",cookie,{expires:new Date(Date.now())});
+  if(!cookie)
+  res.send({expired:true});
+  else
+  res.send({expired:false});
+});
 
 
 router.get('/getcookies',(req,res)=>{
