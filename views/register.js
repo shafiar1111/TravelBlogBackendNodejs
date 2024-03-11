@@ -5,6 +5,14 @@ const router=express.Router();
 
 
 
+router.get('/getcookies',(req,res)=>{
+  const cookie=req.cookies.email;
+  if(cookie)
+  res.send({cookie:cookie,cookiePresent:true});
+  else
+  res.send({cookiePresent:false});
+});
+
 router.post('/login',async (req,res)=>{
    const body=req.body;
    if(body)
