@@ -23,6 +23,7 @@ router.get('/getcookies',(req,res)=>{
 
 router.post('/login',async (req,res)=>{
    const body=req.body;
+   console.log(body);
    if(body)
    {
      try
@@ -31,16 +32,16 @@ router.post('/login',async (req,res)=>{
         if(user)
         {
             res.cookie("email",user.email,{maxAge:9000000,httpOnly:true,domain:"localhost",path:'/'});
-            res.send({msg:"Login"});
+            res.send({msg:"Login",login:true});
         }
         else
         {
-          res.send({msg:"User not found"});
+          res.send({msg:"User not found",login:false});
         }
      }
      catch(err)
      {
-      res.send({err:err});
+      res.send({err:err,login:false});
      }
    }
 });
