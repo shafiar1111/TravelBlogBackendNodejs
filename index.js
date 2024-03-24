@@ -13,7 +13,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cors({
-    origin:process.env.REACT,
+    origin:"https://travelblogfrontendreact-4.onrender.com",
     credentials:true,
 }));
 
@@ -24,5 +24,5 @@ app.use("/image",upload);
 //Connect the database;
 connect();
 
-app.listen(process.env.PORT,()=>`Connection established on port ${process.env.PORT}`);
+app.listen(process.env.PORT,"0.0.0.0",()=>`Connection established on port ${process.env.PORT}`);
 
